@@ -5,12 +5,12 @@
 }
 
 body {
-    background-color: #c8b6ff;
+    background-color: #000000;
     font-family: "Roboto", sans-serif;
 }
 
 #title {
-    color: rgb(0, 0, 0);
+    color: #fff;
     font-size: 3em;
     padding-left: 10px;
 }
@@ -28,13 +28,14 @@ a:hover{
 }
 
 nav {
-    background-color: #ffd6ff;
+    background-color: #000000;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .nav-links {
+    color: #fff;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -42,9 +43,24 @@ nav {
 }
 
 .nav-item {
+    cursor: pointer;
     margin-left: 1em;
 }
 
 .nav-link {
     font-weight: 600px;
+}
+
+#hero-container {
+    max-width: 1000px;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+}
+
+.hero-text {
+    font-size: 4.5em;
+    color: #fff;
 }
