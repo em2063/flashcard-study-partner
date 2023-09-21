@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 *{
     margin: 0;
     padding: 0;
@@ -6,7 +8,7 @@
 
 body {
     background-color: #000000;
-    font-family: "Roboto", sans-serif;
+    font-family: Roboto, sans-serif;
 }
 
 #title {
@@ -21,6 +23,7 @@ ul li {
 
 a {
     text-decoration: none;
+    cursor: pointer;
 }
 
 a:hover{
@@ -47,20 +50,42 @@ nav {
     margin-left: 1em;
 }
 
-.nav-link {
-    font-weight: 600px;
-}
-
 #hero-container {
-    max-width: 1000px;
     width: 50%;
+    max-width: 1000px;
     display: flex;
-    align-items: center;
     justify-content: center;
     height: 90vh;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
 }
 
-.hero-text {
-    font-size: 4.5em;
+.hero-text2 {
+    font-size: 5.5em;
     color: #fff;
+    margin-bottom: 10px;
+}
+
+#hero-description {
+    color: #686868;
+    font-weight: bold;
+}
+
+#hero-button-text {
+    color: #fff;
+}
+
+#hero-button {
+    padding: 10px;
+    margin: 15px;
+    background-color: #6CB4EE;
+    width: 200px;
+    border-radius: 15px;
+    margin-top: 25px;
+}
+
+#hero-button:hover {
+    background-color: #89CFF0;
+    cursor: pointer;
 }
