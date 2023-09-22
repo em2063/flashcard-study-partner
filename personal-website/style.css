@@ -9,12 +9,14 @@
 body {
     background-color: #000000;
     font-family: Roboto, sans-serif;
+    height: 2000px;
 }
 
 #title {
     color: #fff;
-    font-size: 3em;
+    font-size: 2em;
     padding-left: 10px;
+    cursor: pointer;
 }
 
 ul li {
@@ -35,6 +37,9 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 .nav-links {
