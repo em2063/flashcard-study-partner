@@ -1,0 +1,20 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#title {
+    font-size: 2em;
+    margin-left: 4px;
+    color: #E09540;
+}
+
+#outer-container {
+    background-color: #9BD1E5;
+    display: block;
+    justify-content: center;
+    height: 500px;
+    margin: 5%;
+}
+
+    
