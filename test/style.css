@@ -1,0 +1,60 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+#navbar {
+    position: sticky;
+    top: 0;
+}
+
+#title {
+    font-size: 2em;
+    margin-left: 4px;
+    color: #E09540;
+}
+
+#container {
+    background-color: skyblue;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100vh;
+}
+
+.shape {
+    height: 150px;
+    width: 150px;
+    text-align: center;
+}
+
+#square {
+    background-color: red;
+}
+
+#circle {
+    background-color: green;
+    border-radius: 50%;
+}
+
+#square:hover {
+    background-color: rgb(250, 60, 60);
+}
+
+#circle:hover {
+    background-color: rgb(46, 126, 46);
+}
+
+.form-text-box {
+    width: 85px;
+    margin: 15px;
+}
+
+#square form {
+    display: none; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+    

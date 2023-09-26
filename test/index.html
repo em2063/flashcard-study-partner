@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>shapes</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <nav id="navbar">
+        <h1 id="title">test</h1>
+        <hr>
+    </nav>
+
+<div id="container">
+    <div onclick="showForm()" class="shape" id="square">
+        <form onsubmit="area(this)"> 
+            <div>
+                <label for="length">L</label>
+                <input type="text" id="length" name="length" class="form-text-box">
+            </div>
+            <div>
+                <label for="width">W</label>
+                <input type="text" id="width" name="width" class="form-text-box">
+            </div>  
+            <input type="submit">
+        </form>
+    </div>    
+
+<script src="main.js"></script>
+</body>
+</html>
