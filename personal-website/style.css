@@ -90,24 +90,87 @@ nav {
     margin-top: 25px;
 }
 
-#hero-button:hover {
+#hero-button:hover{
     background-color: #89CFF0;
     cursor: pointer;
 }
 
 #about {
     margin-top: 20px;
-    
+    display: flex;
+    flex-direction: row;
 }
 
 #about-container {
-
+    width: 600px;
 }
 
 #about-h1 {
     color: #fff;
+    font-size: 5em;
+    margin-left: 25px;
 }
 
 #about-description {
+    margin-top: 50px;
+    margin-left: 50px;
+    color: #686868;
+    font-size: 1.25em;
+    font-weight: bold;
+}
+
+#skills-container {
+  width: 600px;
+  margin-left: 50px;
+  text-align: center;
+}
+
+#skills-h1 {
+    margin-top: 125px;
+    color: #6F2DA8;
+}
+
+#about-button {
+    padding: 10px;
+    margin: 15px;
+    background-color: #6CB4EE;
+    width: 200px;
+    margin-top: 50px;
     color: #fff;
+    text-align: center;
+}
+
+#about-description-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#about-button:hover {
+    background-color: #89CFF0;
+    cursor: pointer;
+}
+
+ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    list-style: none;
+    justify-content: center;
+}
+
+.skills-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    margin: 15px;
+    width: 100px;
+    background-color: #B284BE;
+    border-radius: 15px;
+    height: 30px;
+    margin-top: 50px;
+    color: #fff;
+    font-weight: bold;
 }
