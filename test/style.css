@@ -28,7 +28,7 @@
     text-align: center;
 }
 
-#square {
+.square {
     background-color: red;
 }
 
@@ -37,8 +37,9 @@
     border-radius: 50%;
 }
 
-#square:hover {
+.square:hover {
     background-color: rgb(250, 60, 60);
+    cursor: pointer;
 }
 
 #circle:hover {
@@ -50,11 +51,23 @@
     margin: 15px;
 }
 
-#square form {
+.square form {
     display: none; 
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100%;
+}
+
+#submit-div {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+}
+
+#area-label {
+    color: white;
+    margin: 15px;
 }
     

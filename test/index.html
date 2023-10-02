@@ -13,7 +13,7 @@
     </nav>
 
 <div id="container">
-    <div onclick="showForm()" class="shape" id="square">
+    <div onclick="showForm()" class="shape square">
         <form onsubmit="area(this)"> 
             <div>
                 <label for="length">L</label>
@@ -23,10 +23,14 @@
                 <label for="width">W</label>
                 <input type="text" id="width" name="width" class="form-text-box">
             </div>  
-            <input type="submit">
+            <div id="submit-div">
+                <input type="submit">
+                <label id="area-label">A: </label>
+            </div>    
         </form>
     </div>    
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="main.js"></script>
 </body>
 </html>
