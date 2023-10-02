@@ -12,6 +12,7 @@ body {
     height: 2000px;
 }
 
+/*Navbar element*/
 #title {
     color: #fff;
     font-size: 2em;
@@ -55,6 +56,7 @@ nav {
     margin-left: 1em;
 }
 
+/*Hero Section */
 #hero-container {
     width: 50%;
     max-width: 1000px;
@@ -95,6 +97,7 @@ nav {
     cursor: pointer;
 }
 
+/*About Section*/
 #about {
     margin-top: 20px;
     display: flex;
@@ -119,6 +122,7 @@ nav {
     font-weight: bold;
 }
 
+/*Skills Section*/
 #skills-container {
   width: 600px;
   margin-left: 50px;
@@ -173,4 +177,33 @@ ul {
     margin-top: 50px;
     color: #fff;
     font-weight: bold;
+}
+
+
+/*Project Section*/
+#project{
+    margin-top: 180px;
+}
+
+#project-h1 {
+    color: #fff;
+    font-size: 5em;
+}
+
+#project-section {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-evenly
+}
+
+.project-containers {
+    height: 300px;
+    width: 200px;
+    background-color: #B284BE;
+    display: flex;
+    align-items: center;
+    text-align: center;
 }
