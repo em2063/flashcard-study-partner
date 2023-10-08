@@ -74,6 +74,10 @@ nav {
     margin-bottom: 10px;
 }
 
+#hero-ethan {
+    color: #3EB489;
+}
+
 #hero-description {
     color: #686868;
     font-weight: bold;
@@ -101,7 +105,7 @@ nav {
 #about {
     margin-top: 20px;
     display: flex;
-    flex-direction: row;
+    align-items: center;
 }
 
 #about-container {
@@ -112,26 +116,14 @@ nav {
     color: #fff;
     font-size: 5em;
     margin-left: 25px;
+    margin-bottom: 50px;
 }
 
 #about-description {
-    margin-top: 50px;
     margin-left: 50px;
     color: #686868;
     font-size: 1.25em;
     font-weight: bold;
-}
-
-/*Skills Section*/
-#skills-container {
-  width: 600px;
-  margin-left: 50px;
-  text-align: center;
-}
-
-#skills-h1 {
-    margin-top: 125px;
-    color: #6F2DA8;
 }
 
 #about-button {
@@ -156,29 +148,20 @@ nav {
     cursor: pointer;
 }
 
-ul {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    list-style: none;
-    justify-content: center;
-}
+/*Skills Section*/
 
-.skills-div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-    margin: 15px;
-    width: 100px;
-    background-color: #B284BE;
-    border-radius: 15px;
-    height: 30px;
-    margin-top: 50px;
+.tab-links{
     color: #fff;
-    font-weight: bold;
+    margin-right: 50px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
 }
 
+#titles {
+    display: flex;
+    margin: 20px 0 40px;
+}
 
 /*Project Section*/
 #project{
