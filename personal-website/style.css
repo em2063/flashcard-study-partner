@@ -159,11 +159,40 @@ nav {
     cursor: pointer;
 }
 
+.tab-links:hover {
+    color: #3EB489;
+}
+
+.tab-links.active-link{
+    font-size: 1.25em;
+    color: #3EB489;
+}
+
 #tab-links-container {
-    background-color: blue;
     justify-content: center;
     display: flex;
     margin: 20px 0 40px;
+}
+
+#skills-desc {
+    background-color: #181818;
+}
+
+.skills-list {
+    display: none;
+}
+
+.skills-list.activeList{
+    display: block;
+}
+
+.skills-list span {
+    color: #E23D28;
+    margin: 10px;
+}
+.skills-list li {
+    margin-top: 15px;
+    color: white;
 }
 
 /*Project Section*/
