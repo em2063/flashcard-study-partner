@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap'); 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap'); 
 
 *{
     margin: 0;
@@ -9,7 +9,6 @@
 body {
     background-color: #000000;
     font-family: Roboto, sans-serif;
-    height: 2000px;
 }
 
 /*Navbar element*/
@@ -22,6 +21,10 @@ body {
 
 ul li {
     list-style: none;
+}
+
+i {
+    margin: 5px;
 }
 
 a {
@@ -101,121 +104,40 @@ nav {
     cursor: pointer;
 }
 
-/*About Section*/
-#about {
-    margin-top: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-}
+/*Footer*/
 
-#about-container {
-    width: 600px;
-}
-
-#about-h1 {
+#footer-div {
+    font-family: Montserrat;
     color: #fff;
-    font-size: 5em;
-    margin-left: 25px;
-    margin-bottom: 50px;
-}
-
-#about-description {
-    margin-left: 50px;
-    color: #686868;
-    font-size: 1.25em;
-    font-weight: bold;
-}
-
-#about-button {
-    padding: 10px;
-    margin: 15px;
-    background-color: #6CB4EE;
-    width: 200px;
-    margin-top: 50px;
-    color: #fff;
-    text-align: center;
-}
-
-#about-description-container {
     display: flex;
+    justify-content: center;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
-#about-button:hover {
-    background-color: #89CFF0;
-    cursor: pointer;
-}
-
-/*Skills Section*/
-
-.tab-links{
-    color: #fff;
-    margin-right: 50px;
-    font-size: 18px;
-    font-weight: 500;
-    cursor: pointer;
-}
-
-.tab-links:hover {
+#footer-div span {
     color: #3EB489;
 }
 
-.tab-links.active-link{
-    font-size: 1.25em;
-    color: #3EB489;
+#footer-h1 {
+    font-size: 2.5em;
 }
 
-#tab-links-container {
-    justify-content: center;
-    display: flex;
-    margin: 20px 0 40px;
+#footer-list i {
+    color: black;
 }
 
-.desc-container {
-    background-color: #181818;
-    height: 100px;
-}
-
-.skills-list.activeList{
-    display: block;
-}
-
-.skills-list span {
-    color: #E23D28;
-    margin: 10px;
-}
-.skills-list li {
+#footer-list {
     margin-top: 15px;
-    color: white;
-}
-
-/*Project Section*/
-#project{
-    margin-top: 180px;
-}
-
-#project-h1 {
-    color: #fff;
-    font-size: 5em;
-}
-
-#project-section {
-    margin-top: 50px;
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    justify-content: space-evenly
 }
 
-.project-containers {
-    height: 300px;
-    width: 200px;
-    background-color: #B284BE;
-    display: flex;
-    align-items: center;
-    text-align: center;
+#footer-list li div {
+    background-color: antiquewhite;
+    border-radius: 50%;
+    margin: 0 10px 0 10px;
+    cursor: pointer;
 }
