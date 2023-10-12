@@ -11,6 +11,8 @@ body {
     font-family: Roboto, sans-serif;
 }
 
+/*HOMEPAGE*/
+
 /*Navbar element*/
 #title {
     color: #fff;
@@ -141,3 +143,112 @@ nav {
     margin: 0 10px 0 10px;
     cursor: pointer;
 }
+/*END OF HOME PAGE*/
+
+/*ABOUT PAGE*/
+
+#about {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+
+#about-container {
+    width: 600px;
+}
+
+
+#about-h1 {
+    color: #fff;
+    font-size: 5em;
+    margin-left: 25px;
+    margin-bottom: 50px;
+}
+
+
+#about-description {
+    margin-left: 50px;
+    color: #686868;
+    font-size: 1.25em;
+    font-weight: bold;
+}
+
+
+#about-button {
+    padding: 10px;
+    margin: 15px;
+    background-color: #6CB4EE;
+    width: 200px;
+    margin-top: 50px;
+    color: #fff;
+    text-align: center;
+}
+
+
+#about-description-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#about-button:hover {
+    background-color: #89CFF0;
+    cursor: pointer;
+}
+
+
+/*Skills Section*/
+
+
+.tab-links{
+    color: #fff;
+    margin-right: 50px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.4s ease;
+}
+
+
+.tab-links:hover {
+    color: #3EB489;
+}
+
+
+.tab-links.active-link{
+    font-size: 1.25em;
+    color: #3EB489;
+}
+
+
+#tab-links-container {
+    justify-content: center;
+    display: flex;
+    margin: 20px 0 40px;
+}
+
+
+.desc-container {
+    background-color: #181818;
+    height: 100px;
+}
+
+
+.skills-list.activeList{
+    display: block;
+}
+
+
+.skills-list span {
+    color: #E23D28;
+    margin: 10px;
+}
+.skills-list li {
+    margin-top: 15px;
+    color: white;
+}
+
