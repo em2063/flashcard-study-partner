@@ -48,6 +48,10 @@ nav {
     z-index: 100;
 }
 
+nav span {
+    color: #3EB489;
+}
+
 .nav-links {
     color: #fff;
     display: flex;
@@ -99,13 +103,13 @@ nav {
 #hero-button {
     padding: 10px;
     margin: 25px 15px 15px 15px;
-    background-color: #6CB4EE;
+    background-color: #3E9C89;
     width: 200px;
     border-radius: 15px;
 }
 
 #hero-button:hover{
-    background-color: #89CFF0;
+    background-color: #63C5B5;
     cursor: pointer;
 }
 
@@ -165,6 +169,7 @@ nav {
 
 #about-container {
     width: 700px;
+    margin-bottom: 50px;
 }
 
 #about-h1 {
@@ -195,51 +200,46 @@ nav {
 
 /*Skills Section*/
 
-.tab-links{
+#skills-container {
+    margin: 50px 0 0 50px;
+}
+
+#skill-title {
     color: #fff;
-    margin-right: 50px;
-    font-size: 18px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: color 0.4s ease;
+    font-size: 3em;
 }
 
-
-.tab-links:hover {
+#skills-container span {
     color: #3EB489;
 }
 
-
-.tab-links.active-link{
-    font-size: 1.25em;
-    color: #3EB489;
-}
-
-
-#tab-links-container {
-    justify-content: center;
+#skillset-container {
     display: flex;
-    margin: 20px 0 40px;
+    flex-direction: row;
+    justify-content: center;
+    justify-content: space-evenly;
+    margin: 40px 0 25px 0;
 }
 
-
-.desc-container {
-    background-color: #181818;
+.skill {
+    border-radius: 15px;
     height: 100px;
+    width: 100px;
+    background-color: #36454F;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 3px solid #3E9C89;
+    transition: margin 0.3s;
 }
 
-
-.skills-list.activeList{
-    display: block;
+.skill img {
+    height: 55px;
+    width: 55px;
 }
 
-
-.skills-list span {
-    color: #E23D28;
-    margin: 10px;
-}
-.skills-list li {
-    margin-top: 15px;
-    color: white;
+.skill:hover {
+    margin-top: -10px;
 }
 
