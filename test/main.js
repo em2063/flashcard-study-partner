@@ -19,6 +19,4 @@ function area(e){
     }
 
     form.style.display = "none";
-    var square = document.querySelector(".square");
-    square.classList.add("square:hover");
 }
