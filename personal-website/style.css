@@ -104,7 +104,7 @@ nav span {
     padding: 10px;
     margin: 25px 15px 15px 15px;
     background-color: #3E9C89;
-    width: 200px;
+    width: 35%;
     border-radius: 15px;
 }
 
@@ -115,8 +115,8 @@ nav span {
 
 #hero-section img {
     margin-top: 100px;
-    height: 400px;
-    width: 400px;
+    height: 35%;
+    width: 35%;
 }
 
 /*Footer*/
@@ -168,7 +168,7 @@ nav span {
 }
 
 #about-container {
-    width: 700px;
+    width: 50%;
     margin-bottom: 50px;
 }
 
@@ -200,20 +200,20 @@ nav span {
 
 /*Skills Section*/
 
-#skills-container {
+.skills-container {
     margin: 50px 0 0 50px;
 }
 
-#skill-title {
+.skill-title {
     color: #fff;
     font-size: 3em;
 }
 
-#skills-container span {
+.skills-container span {
     color: #3EB489;
 }
 
-#skillset-container {
+.skillset-container {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -235,8 +235,8 @@ nav span {
 }
 
 .skill img {
-    height: 55px;
-    width: 55px;
+    height: 50%;
+    width: 50%;
 }
 
 .skill:hover {
