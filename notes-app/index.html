@@ -1,0 +1,25 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>notes-app</title>
+  </head>
+  <body>
+    <div class="app-container">
+      <form class="notes-form">
+        <input placeholder="title" required />
+        <textarea placeholder="Content" rows="10" required></textarea>
+        <button type="submit">submit</button>
+      </form>
+      <div className="notes-grid">
+        <div className="note-item">
+          <div className="notes-header">
+            <button>x</button>
+          </div>
+          <h2>title</h2>
+          <p>content</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
