@@ -15,7 +15,7 @@ body {
     }
   }
   
-  #notes-grid {
+  #flashcard-grid {
     display: grid;
     grid-template-columns: repeat(
       auto-fill, 
@@ -25,7 +25,7 @@ body {
     gap: 20px;
   }
   
-  .note-item {
+  .flashcard-item {
     display: flex;
     flex-direction: column;
     border: 5px solid #ccc;
@@ -36,13 +36,17 @@ body {
     rgba(0, 0, 0, 0.1);
     cursor: pointer;
   }
+
+  .flashcard-item .flashcard-content {
+    text-align: center;
+  }
   
-  .note-header {
+  .flashcard-header {
     display: flex;
     justify-content: flex-end;
   }
   
-  .note-header button {
+  .flashcard-header button {
     font-size: 10px;
     background: transparent;
     border: none;
@@ -54,7 +58,7 @@ body {
     margin: 0;
   }
   
-  #notes-form {
+  #flashcard-form {
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -67,7 +71,7 @@ body {
     font-size: 16px;
   }
   
-  #notes-form button {
+  #flashcard-form button {
     border-radius: 5px;
     background-color: #cdb4db;
     border: none;
@@ -76,7 +80,7 @@ body {
     color: white;
   }
   
-  #notes-form button:hover {
+  #flashcard-form button:hover {
     background-color: #deaaff;
     cursor: pointer;
   }

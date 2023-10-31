@@ -1,30 +1,38 @@
-let notes = []; //Creates empty array for storing notes
+let flashcards = []; //Creates empty array for storing notes
 
-const noteForm = document.getElementById("notes-form"); //gets form
+const flashcardForm = document.getElementById("flashcard-form"); //gets form
 const titleInput = document.getElementById("titleInput"); //gets title element of form
 const contentInput = document.getElementById("contentInput"); //gets content element of form
-const notesGrid = document.getElementById("notes-grid"); //gets container that holds notes
+const flashcardGrid = document.getElementById("flashcard-grid"); //gets container that holds notes
 
-noteForm.addEventListener("submit", (event) => {
+flashcardForm.addEventListener("submit", (event) => {
   event.preventDefault(); //prevents refresh of page
-  handleAddNote(); //once button is pressed calls method to create new note
+  handleAddFlashcard(); //once button is pressed calls method to create new note
 });
 
-function handleAddNote() {
+function handleAddFlashcard() {
   //creates new note object with parameters
-  const newNote = {
-    id: notes.length + 1,
+  const newFlashcard = {
+    id: flashcards.length + 1,
     title: titleInput.value, //gets title
     content: contentInput.value, //gets content
+    isRevealed: false,
   };
-  notes.unshift(newNote); //adds note to beginning of array
-  createNotes(); //calls note template
+  flashcards.unshift(newFlashcard); //adds note to beginning of array
+  createFlashcard(); //calls note template
   clearForm(); //resets form
 }
 
-function deleteNote(noteId) {
-  notes = notes.filter((note) => note.id !== noteId);
-  createNotes();
+function deleteFlashcard(flashcardId) {
+  flashcards = flashcards.filter((flashcard) => flashcard.id !== flashcardId); //filters out all notes except the deleted one
+}
+
+function revealFlashcard(flashcardId) {
+  const flashcard = flashcards.find(
+    (flashcard) => flashcard.id === flashcardId
+  );
+  flashcard.isRevealed = !flashcard.isRevealed;
+  createFlashcard();
 }
 
 //clears form for use again
@@ -34,31 +42,36 @@ function clearForm() {
 }
 
 //template for creating new note - creates html elements and appends into the note grid
-function createNotes() {
-  notesGrid.innerHTML = "";
-  notes.forEach((note) => {
-    const noteItem = document.createElement("div");
-    noteItem.classList.add("note-item"); //creates container for everything inside note
+function createFlashcard() {
+  flashcardGrid.innerHTML = "";
+  flashcards.forEach((flashcard) => {
+    const flashcardItem = document.createElement("div");
+    flashcardItem.classList.add("flashcard-item"); //creates container for everything inside note
+    flashcardItem.addEventListener("click", () => {
+      revealFlashcard(flashcard.id);
+    });
 
-    const noteHeader = document.createElement("div"); //creates container for header elements
-    noteHeader.classList.add("note-header");
+    const flashcardText = document.createElement("div");
+    flashcardText.classList.add("flashcard-content");
+
+    if (!flashcard.isRevealed) {
+      flashcardText.textContent = flashcard.title;
+    } else {
+      flashcardText.textContent = flashcard.content;
+    }
+
+    const flashcardHeader = document.createElement("div"); //creates container for header elements
+    flashcardHeader.classList.add("flashcard-header");
 
     const deleteButton = document.createElement("button"); //creates buttomn to remove note
     deleteButton.textContent = "x";
-    deleteButton.addEventListener("click", () => deleteNote(note.id));
+    deleteButton.addEventListener("click", () => deleteFlashcard(flashcard.id));
 
-    noteHeader.appendChild(deleteButton); //adds delete button onto header
+    flashcardHeader.appendChild(deleteButton); //adds delete button onto header
 
-    const noteTitle = document.createElement("h2"); //creates title section in note
-    noteTitle.textContent = note.title;
+    flashcardItem.appendChild(flashcardHeader);
 
-    const noteContent = document.createElement("p"); //Creates content section in note
-    noteContent.textContent = note.content;
-
-    noteItem.appendChild(noteHeader);
-    noteItem.appendChild(noteTitle);
-    noteItem.appendChild(noteContent); //adds all elements into note
-
-    notesGrid.appendChild(noteItem); //adds note into grid
+    flashcardGrid.appendChild(flashcardItem); //adds note into grid
+    flashcardItem.appendChild(flashcardText);
   });
 }
