@@ -1,4 +1,4 @@
-const notes = []; //Creates empty array for storing notes
+let notes = []; //Creates empty array for storing notes
 
 const noteForm = document.getElementById("notes-form"); //gets form
 const titleInput = document.getElementById("titleInput"); //gets title element of form
@@ -22,6 +22,11 @@ function handleAddNote() {
   clearForm(); //resets form
 }
 
+function deleteNote(noteId) {
+  notes = notes.filter((note) => note.id !== noteId);
+  createNotes();
+}
+
 //clears form for use again
 function clearForm() {
   titleInput.value = "";
@@ -40,6 +45,7 @@ function createNotes() {
 
     const deleteButton = document.createElement("button"); //creates buttomn to remove note
     deleteButton.textContent = "x";
+    deleteButton.addEventListener("click", () => deleteNote(note.id));
 
     noteHeader.appendChild(deleteButton); //adds delete button onto header
 
