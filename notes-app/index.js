@@ -25,6 +25,7 @@ function handleAddFlashcard() {
 
 function deleteFlashcard(flashcardId) {
   flashcards = flashcards.filter((flashcard) => flashcard.id !== flashcardId); //filters out all notes except the deleted one
+  createFlashcard();
 }
 
 function revealFlashcard(flashcardId) {
@@ -51,11 +52,16 @@ function createFlashcard() {
       revealFlashcard(flashcard.id);
     });
 
+    const flashcardContent = document.createElement("div");
+    flashcardContent.classList.add("flashcard-text-container");
+
     const flashcardText = document.createElement("div");
-    flashcardText.classList.add("flashcard-content");
+    flashcardText.classList.add("flashcard-text");
 
     if (!flashcard.isRevealed) {
-      flashcardText.textContent = flashcard.title;
+      const flashcardTitle = document.createElement("h2");
+      flashcardText.appendChild(flashcardTitle);
+      flashcardTitle.textContent = flashcard.title;
     } else {
       flashcardText.textContent = flashcard.content;
     }
@@ -68,10 +74,10 @@ function createFlashcard() {
     deleteButton.addEventListener("click", () => deleteFlashcard(flashcard.id));
 
     flashcardHeader.appendChild(deleteButton); //adds delete button onto header
-
     flashcardItem.appendChild(flashcardHeader);
 
     flashcardGrid.appendChild(flashcardItem); //adds note into grid
-    flashcardItem.appendChild(flashcardText);
+    flashcardContent.appendChild(flashcardText);
+    flashcardItem.appendChild(flashcardContent);
   });
 }
