@@ -51,11 +51,16 @@ body {
 }
 
 .flashcard-header button {
-  font-size: 10px;
+  font-size: 20px;
   background: transparent;
   border: none;
-  cursor: pointer;
   max-width: fit-content;
+}
+
+.flashcard-header button:hover {
+  background-color: #cdb4db;
+  border-radius: 50%;
+  cursor: pointer;
 }
 
 h2 {
