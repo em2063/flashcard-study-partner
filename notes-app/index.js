@@ -122,7 +122,10 @@ function createFlashcard() {
     deleteButton.textContent = "x";
     deleteButton.addEventListener("click", () => deleteFlashcard(flashcard.id));
     const editButton = document.createElement("button"); //creates button to edit flashcard
-    editButton.addEventListener("click", () => editFlashcard(flashcard.id));
+    editButton.addEventListener("click", (event) => {
+      event.stopPropagation();
+      editFlashcard(flashcard.id);
+    });
     editButton.textContent = "...";
 
     flashcardHeader.appendChild(editButton);
@@ -132,10 +135,5 @@ function createFlashcard() {
     flashcardGrid.appendChild(flashcardItem); //adds note into grid
     flashcardContent.appendChild(flashcardText);
     flashcardItem.appendChild(flashcardContent);
-
-    if (flashcard.id === currentEditingId) {
-      flashcard.title = titleInput.value;
-      flashcard.content = contentInput.value;
-    }
   });
 }
