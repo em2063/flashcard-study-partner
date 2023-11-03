@@ -98,18 +98,17 @@ input {
   cursor: pointer;
 }
 
-#side-bar {
+#folder-container {
   display: flex;
   flex-direction: column;
   border: 3px solid #cdb4db;
   padding: 10px;
   border-radius: 5px;
   background-color: #deaaff;
-  cursor: pointer;
   height: 250px;
 }
 
-#side-bar button {
+#folder-container button {
   border-radius: 5px;
   background-color: #cdb4db;
   border: none;
@@ -118,7 +117,7 @@ input {
   color: white;
 }
 
-#side-bar button:hover {
+#folder-container button:hover {
   background-color: #f2c1d1;
   cursor: pointer;
 }
