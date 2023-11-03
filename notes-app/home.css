@@ -1,0 +1,50 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Kawi:wght@700&display=swap");
+
+body {
+  background-color: #b284be;
+  overflow: hidden;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+}
+
+#home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#menu-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 30px;
+}
+
+#menu-container div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 5px solid #deaaff;
+  padding: 10px;
+  border-radius: 15px;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  height: 170px;
+  width: 170px;
+}
+
+#menu-container div h4 {
+  font-family: "Noto Sans Kawi", sans-serif;
+  color: #de3163;
+}
+
+#menu-container div:hover {
+  background-color: #cdb4db;
+  cursor: pointer;
+  padding: 13px;
+}

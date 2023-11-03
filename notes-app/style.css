@@ -71,7 +71,7 @@ h2 {
 }
 
 #flashcard-form {
-  display: flex;
+  display: none;
   flex-direction: column;
   gap: 20px;
 }
@@ -98,39 +98,27 @@ input {
   cursor: pointer;
 }
 
-#homepage-body {
+#side-bar {
   display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#home-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#menu-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 30px;
-}
-
-#menu-container div {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 5px solid #deaaff;
+  flex-direction: column;
+  border: 3px solid #cdb4db;
   padding: 10px;
-  border-radius: 15px;
-  background-color: #f9f9f9;
+  border-radius: 5px;
+  background-color: #deaaff;
   cursor: pointer;
-  height: 150px;
-  width: 150px;
+  height: 250px;
 }
 
-#menu-container div:hover {
+#side-bar button {
+  border-radius: 5px;
   background-color: #cdb4db;
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  color: white;
+}
+
+#side-bar button:hover {
+  background-color: #f2c1d1;
   cursor: pointer;
 }
