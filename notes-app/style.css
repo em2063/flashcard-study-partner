@@ -97,3 +97,40 @@ input {
   background-color: #deaaff;
   cursor: pointer;
 }
+
+#homepage-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#menu-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 30px;
+}
+
+#menu-container div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 5px solid #deaaff;
+  padding: 10px;
+  border-radius: 15px;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  height: 150px;
+  width: 150px;
+}
+
+#menu-container div:hover {
+  background-color: #cdb4db;
+  cursor: pointer;
+}

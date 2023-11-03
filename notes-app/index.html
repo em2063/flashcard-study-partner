@@ -2,17 +2,27 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Page</title>
     <link rel="stylesheet" type="text/css" href="style.css" />
-    <title>notes-app</title>
   </head>
-  <body>
-    <div id="app-container">
-      <form id="flashcard-form">
-        <input id="titleInput" placeholder="title" required />
-        <textarea id="contentInput" placeholder="content" rows="10" required></textarea>
-        <button id="submit-button" type="submit">submit</button>
-      </form>
-      <div id="flashcard-grid"></div>
-    <script src="index.js"></script>
+  <header>
+    <nav>
+      <h2>Flashio</h2>
+    </nav>
+  </header>
+  <body id="homepage-body">
+    <div id="home-container">
+      <div id="menu-container">
+        <div id="createFlash">Create FlashCards</div>
+        <div>Test Yourself</div>
+      </div>
+    </div>
+    <script>
+      document
+        .getElementById("createFlash")
+        .addEventListener("click", function () {
+          window.location.href = "createFlashcard.html";
+        });
+    </script>
   </body>
 </html>

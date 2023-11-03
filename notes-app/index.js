@@ -66,14 +66,14 @@ cancelButton.addEventListener("click", () => handleCancel());
 
 function editFlashcard(flashcardId) {
   const flashcard = flashcards.find(
-    (flashcard) => flashcard.id === flashcardId
+    (flashcard) => flashcard.id === flashcardId //finds flashcard that has been clicked
   );
   titleInput.value = flashcard.title;
-  contentInput.value = flashcard.content;
-  flashcardForm.removeChild(submitButton);
+  contentInput.value = flashcard.content; //sets form details to match the content on the flashcard
+  flashcardForm.removeChild(submitButton); //removes submit button from flashcard
   flashcardForm.appendChild(saveButton);
-  flashcardForm.appendChild(cancelButton);
-  flashcardEditID = flashcardId;
+  flashcardForm.appendChild(cancelButton); //adds edit buttons
+  flashcardEditID = flashcardId; //sets the selected flashcard to the one that is currently being edited
 }
 
 function revealFlashcard(flashcardId) {
