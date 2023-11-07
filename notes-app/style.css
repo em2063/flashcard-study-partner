@@ -72,6 +72,17 @@ h2 {
 
 #flashcard-form {
   display: none;
+}
+
+#folder-form-container {
+  flex-direction: column;
+  display: none;
+  gap: 20px;
+  width: 100%;
+}
+
+form {
+  display: flex;
   flex-direction: column;
   gap: 20px;
 }
@@ -84,7 +95,7 @@ input {
   font-size: 16px;
 }
 
-#flashcard-form button {
+form button {
   border-radius: 5px;
   background-color: #cdb4db;
   border: none;
@@ -93,7 +104,7 @@ input {
   color: white;
 }
 
-#flashcard-form button:hover {
+form button:hover {
   background-color: #deaaff;
   cursor: pointer;
 }
@@ -105,7 +116,7 @@ input {
   padding: 10px;
   border-radius: 5px;
   background-color: #deaaff;
-  height: 250px;
+  align-items: center;
 }
 
 #folder-container button {

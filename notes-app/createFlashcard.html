@@ -9,7 +9,14 @@
     <div id="app-container">
       <div id="side-bar">
         <div id="folder-container">
-          <button>New Folder</button>
+          <div id="folder-form-container">
+            <form id="folder-form">
+              <input  id="folderInput" placeholder="title" required>
+              <textarea placeholder="description" id="folder-desc" required rows="2"></textarea>
+              <button type="submit">Add Folder</button>
+            </form>
+          </div>
+          <button id="folder-button">New Folder</button>
           <h3>Your Folders</h3>
           <ul></ul>
         </div>

@@ -1,5 +1,7 @@
-// Initialize an empty array for storing flashcards
+// Initialise an empty array for storing flashcards
 const flashcards = [];
+//Initialise empty array for storing folders
+const folders = [];
 
 // Get form and form elements
 const flashcardForm = document.getElementById("flashcard-form");
@@ -7,6 +9,18 @@ const titleInput = document.getElementById("titleInput");
 const contentInput = document.getElementById("contentInput");
 const flashcardGrid = document.getElementById("flashcard-grid");
 const submitButton = document.getElementById("submit-button");
+const folderContainer = document.getElementById("folder-container");
+const folderFormContainer = document.getElementById("folder-form-container");
+const newFolderButton = document.getElementById("folder-button");
+
+// Event listener for new folder
+newFolderButton.addEventListener("click", () => handleNewFolder());
+
+//Function that creates new folder
+function handleNewFolder() {
+  folderContainer.removeChild(newFolderButton);
+  folderFormContainer.style.display = "flex";
+}
 
 // Event listener for form submission
 flashcardForm.addEventListener("submit", (event) => {
