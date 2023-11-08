@@ -1,7 +1,7 @@
 // Initialise an empty array for storing flashcards
-const flashcards = [];
+let flashcards = [];
 //Initialise empty array for storing folders
-const folders = [];
+let folders = [];
 
 // Get form and form elements
 const flashcardForm = document.getElementById("flashcard-form");
@@ -12,14 +12,49 @@ const submitButton = document.getElementById("submit-button");
 const folderContainer = document.getElementById("folder-container");
 const folderFormContainer = document.getElementById("folder-form-container");
 const newFolderButton = document.getElementById("folder-button");
+const folderCancelButton = document.getElementById("folder-cancel-button");
+const folderList = document.getElementById("folder-list");
+const folderTitle = document.getElementById("folder-input");
+const folderDesc = document.getElementById("folder-desc");
+const folderForm = document.getElementById("folder-form");
 
 // Event listener for new folder
 newFolderButton.addEventListener("click", () => handleNewFolder());
+folderCancelButton.addEventListener("click", () => handleFolderCancel());
+
+folderForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  handleAddFolder();
+});
 
 //Function that creates new folder
 function handleNewFolder() {
-  folderContainer.removeChild(newFolderButton);
+  newFolderButton.style.display = "none";
   folderFormContainer.style.display = "flex";
+}
+
+//Function that handles when users no longer want to create a folder
+function handleFolderCancel() {
+  folderFormContainer.style.display = "none";
+  newFolderButton.style.display = "flex";
+}
+
+function clearFolderForm() {
+  folderTitle.value = "";
+  folderDesc.value = "";
+}
+
+function handleAddFolder() {
+  const newFolder = {
+    id: flashcards.length + 1,
+    title: folderTitle.value,
+    description: folderDesc.value,
+  };
+  folders.unshift(newFolder);
+  folderFormContainer.style.display = "none";
+  newFolderButton.style.display = "flex";
+  createFolder();
+  clearFolderForm();
 }
 
 // Event listener for form submission
@@ -160,5 +195,15 @@ function createFlashcard() {
     flashcardGrid.appendChild(flashcardItem);
     flashcardContent.appendChild(flashcardText);
     flashcardItem.appendChild(flashcardContent);
+  });
+}
+
+function createFolder() {
+  folderList.innerHTML = "";
+  folders.forEach((folder) => {
+    const folderItem = document.createElement("button");
+    folderItem.id = "folder-item";
+    folderItem.textContent = folder.title;
+    folderList.appendChild(folderItem);
   });
 }

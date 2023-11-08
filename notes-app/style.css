@@ -84,7 +84,7 @@ h2 {
 form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
 }
 
 textarea,
@@ -117,6 +117,7 @@ form button:hover {
   border-radius: 5px;
   background-color: #deaaff;
   align-items: center;
+  justify-content: center;
 }
 
 #folder-container button {
@@ -131,4 +132,16 @@ form button:hover {
 #folder-container button:hover {
   background-color: #f2c1d1;
   cursor: pointer;
+}
+
+#folder-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#folder-item {
+  width: 100%;
 }
