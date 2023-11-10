@@ -1,6 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Kawi:wght@700&family=Roboto&family=Rubik:wght@800&display=swap");
+
 body {
   margin: 20px;
   background-color: #b284be;
+  font-family: "Noto Sans Kawi", sans-serif;
 }
 
 #app-container {
@@ -158,4 +161,8 @@ form button:hover {
 
 .folder-item {
   width: 100%;
+}
+
+#flashcard-description {
+  font-family: "Rubik", sans-serif;
 }

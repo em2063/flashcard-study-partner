@@ -67,6 +67,13 @@ function handleOpenFolder(Id) {
   folderGridDescription.textContent = folder.description;
 }
 
+function handleDeleteFolder(folderId) {
+  console.log("yes");
+  folders = folders.filter((folder) => folder.id !== folderId);
+  createFolder();
+  console.log("yes");
+}
+
 // Event listener for form submission
 flashcardForm.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -213,10 +220,26 @@ function createFolder() {
   folders.forEach((folder) => {
     const folderItem = document.createElement("button");
     folderItem.classList.add("folder-item");
-    folderItem.textContent = folder.title;
-
+    const buttonText = document.createElement("p");
+    buttonText.innerHTML = folder.title;
     folderItem.addEventListener("click", () => handleOpenFolder(folder.id));
 
+    const buttonContainer = document.createElement("div");
+    buttonContainer.classList.add("flashcard-header");
+    buttonContainer.style.display = "flex";
+    buttonContainer.style.justifyContent = "space-between";
+
+    const deleteButton = document.createElement("button");
+    deleteButton.classList.add("delete-button");
+    deleteButton.textContent = "x";
+    deleteButton.addEventListener("click", (event) => {
+      event.stopPropagation();
+      handleDeleteFolder(folder.id);
+    });
+
+    buttonContainer.appendChild(buttonText);
+    buttonContainer.appendChild(deleteButton);
+    folderItem.appendChild(buttonContainer);
     folderList.appendChild(folderItem);
   });
 }
