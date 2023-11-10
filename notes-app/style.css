@@ -15,11 +15,25 @@ body {
   }
 }
 
+#flashcard-grid-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+#flashcard-grid-container h1 {
+  font-size: 2em;
+}
+
 #flashcard-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   grid-auto-rows: minmax(250px, auto);
   gap: 20px;
+  width: 100%;
+  height: 100%;
 }
 
 .flashcard-item {
@@ -142,6 +156,6 @@ form button:hover {
   align-items: center;
 }
 
-#folder-item {
+.folder-item {
   width: 100%;
 }

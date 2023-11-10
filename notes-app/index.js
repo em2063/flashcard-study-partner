@@ -4,19 +4,23 @@ let flashcards = [];
 let folders = [];
 
 // Get form and form elements
-const flashcardForm = document.getElementById("flashcard-form");
-const titleInput = document.getElementById("titleInput");
-const contentInput = document.getElementById("contentInput");
-const flashcardGrid = document.getElementById("flashcard-grid");
-const submitButton = document.getElementById("submit-button");
-const folderContainer = document.getElementById("folder-container");
-const folderFormContainer = document.getElementById("folder-form-container");
-const newFolderButton = document.getElementById("folder-button");
-const folderCancelButton = document.getElementById("folder-cancel-button");
-const folderList = document.getElementById("folder-list");
-const folderTitle = document.getElementById("folder-input");
-const folderDesc = document.getElementById("folder-desc");
-const folderForm = document.getElementById("folder-form");
+const flashcardForm = document.getElementById("flashcard-form"); //gets flashcard form
+const titleInput = document.getElementById("titleInput"); //gets title input of flashcard form
+const contentInput = document.getElementById("contentInput"); //gets description input of flashcard form
+const flashcardGrid = document.getElementById("flashcard-grid"); //gets grid that flashcards sit in
+const submitButton = document.getElementById("submit-button"); //gets button for submitting flashcard form
+const folderContainer = document.getElementById("folder-container"); //gets container that all elements of folder sit in
+const folderFormContainer = document.getElementById("folder-form-container"); //gets container that flashcard form sits in
+const newFolderButton = document.getElementById("folder-button"); //gets button for creating new folder
+const folderCancelButton = document.getElementById("folder-cancel-button"); //gets button for cancelling folder creation
+const folderList = document.getElementById("folder-list"); //gets container that folders sit in
+const folderTitle = document.getElementById("folder-input"); //gets input from dolder form
+const folderDesc = document.getElementById("folder-desc"); //gets description from folder form
+const folderForm = document.getElementById("folder-form"); //gets folder form
+const folderGridTitle = document.getElementById("flashcard-folder-title");
+const folderGridDescription = document.getElementById(
+  "flashcard-folder-description"
+);
 
 // Event listener for new folder
 newFolderButton.addEventListener("click", () => handleNewFolder());
@@ -46,7 +50,7 @@ function clearFolderForm() {
 
 function handleAddFolder() {
   const newFolder = {
-    id: flashcards.length + 1,
+    id: folders.length + 1,
     title: folderTitle.value,
     description: folderDesc.value,
   };
@@ -55,6 +59,12 @@ function handleAddFolder() {
   newFolderButton.style.display = "flex";
   createFolder();
   clearFolderForm();
+}
+
+function handleOpenFolder(Id) {
+  const folder = folders.find((folder) => folder.id === Id);
+  folderGridTitle.textContent = folder.title;
+  folderGridDescription.textContent = folder.description;
 }
 
 // Event listener for form submission
@@ -202,8 +212,11 @@ function createFolder() {
   folderList.innerHTML = "";
   folders.forEach((folder) => {
     const folderItem = document.createElement("button");
-    folderItem.id = "folder-item";
+    folderItem.classList.add("folder-item");
     folderItem.textContent = folder.title;
+
+    folderItem.addEventListener("click", () => handleOpenFolder(folder.id));
+
     folderList.appendChild(folderItem);
   });
 }
