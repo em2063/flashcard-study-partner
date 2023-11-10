@@ -87,8 +87,13 @@ h2 {
   margin: 0;
 }
 
+#new-flash-box {
+  width: 100%;
+}
+
 #flashcard-form {
   display: none;
+  width: 100%;
 }
 
 #folder-form-container {
@@ -165,4 +170,17 @@ form button:hover {
 
 #flashcard-description {
   font-family: "Rubik", sans-serif;
+}
+
+#folder-container-buttons {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+#folder-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

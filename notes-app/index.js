@@ -5,6 +5,7 @@ let folders = [];
 
 // Get form and form elements
 const flashcardForm = document.getElementById("flashcard-form"); //gets flashcard form
+const newFlashFormBox = document.getElementById("new-flash-box");
 const titleInput = document.getElementById("titleInput"); //gets title input of flashcard form
 const contentInput = document.getElementById("contentInput"); //gets description input of flashcard form
 const flashcardGrid = document.getElementById("flashcard-grid"); //gets grid that flashcards sit in
@@ -20,6 +21,9 @@ const folderForm = document.getElementById("folder-form"); //gets folder form
 const folderGridTitle = document.getElementById("flashcard-folder-title");
 const folderGridDescription = document.getElementById(
   "flashcard-folder-description"
+);
+const folderButtonContainer = document.getElementById(
+  "folder-container-buttons"
 );
 
 // Event listener for new folder
@@ -61,17 +65,37 @@ function handleAddFolder() {
   clearFolderForm();
 }
 
+function handleNewFlashcard() {
+  folderButtonContainer.removeChild(
+    document.getElementById("newFlashcardButton")
+  );
+  folderButtonContainer.removeChild(newFolderButton);
+  let thisForm = flashcardForm;
+  thisForm.id = "thisFlashForm";
+  newFlashFormBox.appendChild(thisForm);
+  thisForm.style.display = "flex";
+}
+
 function handleOpenFolder(Id) {
   const folder = folders.find((folder) => folder.id === Id);
   folderGridTitle.textContent = folder.title;
   folderGridDescription.textContent = folder.description;
+
+  const existingButton = document.getElementById("newFlashcardButton");
+  if (!existingButton) {
+    const newFlashcardButton = document.createElement("button");
+    newFlashcardButton.textContent = "New Flashcard";
+    newFlashcardButton.id = "newFlashcardButton";
+    newFlashcardButton.addEventListener("click", () => handleNewFlashcard());
+    folderButtonContainer.appendChild(newFlashcardButton);
+  }
 }
 
 function handleDeleteFolder(folderId) {
-  console.log("yes");
   folders = folders.filter((folder) => folder.id !== folderId);
   createFolder();
-  console.log("yes");
+  folderGridTitle.textContent = "";
+  folderGridDescription.textContent = "";
 }
 
 // Event listener for form submission
@@ -79,6 +103,12 @@ flashcardForm.addEventListener("submit", (event) => {
   event.preventDefault();
   handleAddFlashcard();
 });
+
+//function that handles cancel button on flashcard form
+function handleCancelFlashcardForm() {
+  titleInput.textContent = "";
+  contentInput.textContent = "";
+}
 
 // Function to add a new flashcard
 function handleAddFlashcard() {
@@ -91,6 +121,12 @@ function handleAddFlashcard() {
   flashcards.unshift(newFlashcard);
   createFlashcard();
   clearForm();
+
+  document.getElementById("thisFlashForm").style.display = "none";
+  folderButtonContainer.appendChild(newFolderButton);
+  folderButtonContainer.appendChild(
+    document.getElementById("newFlashcardButton")
+  );
 }
 
 // Function to delete a flashcard
