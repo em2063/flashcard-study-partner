@@ -47,11 +47,13 @@ function handleFolderCancel() {
   newFolderButton.style.display = "flex";
 }
 
+//Clears form after folder is added
 function clearFolderForm() {
   folderTitle.value = "";
   folderDesc.value = "";
 }
 
+//Creates new folder object and adds it to the folders array
 function handleAddFolder() {
   const newFolder = {
     id: folders.length + 1,
@@ -65,6 +67,7 @@ function handleAddFolder() {
   clearFolderForm();
 }
 
+//when user clicks button to create new flashcard, this function allows shows the form to do so
 function handleNewFlashcard() {
   folderButtonContainer.removeChild(
     document.getElementById("newFlashcardButton")
@@ -76,6 +79,7 @@ function handleNewFlashcard() {
   thisForm.style.display = "flex";
 }
 
+//When user clicks on a folder it displays folder title, name and subsequent flashcards
 function handleOpenFolder(Id) {
   const folder = folders.find((folder) => folder.id === Id);
   folderGridTitle.textContent = folder.title;
@@ -91,6 +95,7 @@ function handleOpenFolder(Id) {
   }
 }
 
+//If user wants to delete a folder this filters the 'deleted folder out
 function handleDeleteFolder(folderId) {
   folders = folders.filter((folder) => folder.id !== folderId);
   createFolder();
@@ -250,7 +255,7 @@ function createFlashcard() {
     flashcardItem.appendChild(flashcardContent);
   });
 }
-
+//Very similar to createFlashcard(), dynamically adds folder elements based on content of folder array
 function createFolder() {
   folderList.innerHTML = "";
   folders.forEach((folder) => {
