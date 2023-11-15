@@ -1,7 +1,10 @@
 // Initialise an empty array for storing flashcards
 let flashcards = [];
+let displayedFlashcards = [];
 //Initialise empty array for storing folders
 let folders = [];
+
+let selectedFolderId = null;
 
 // Get form and form elements
 const flashcardForm = document.getElementById("flashcard-form"); //gets flashcard form
@@ -53,10 +56,15 @@ function clearFolderForm() {
   folderDesc.value = "";
 }
 
+function generateUniqueId() {
+  // Generate a random string as a unique ID (this is just a simple example)
+  return Date.now().toString(36) + Math.random().toString(36).substr(2);
+}
+
 //Creates new folder object and adds it to the folders array
 function handleAddFolder() {
   const newFolder = {
-    id: folders.length + 1,
+    id: generateUniqueId(),
     title: folderTitle.value,
     description: folderDesc.value,
   };
@@ -81,9 +89,16 @@ function handleNewFlashcard() {
 
 //When user clicks on a folder it displays folder title, name and subsequent flashcards
 function handleOpenFolder(Id) {
+  flashcardGrid.innerHTML = "";
   const folder = folders.find((folder) => folder.id === Id);
   folderGridTitle.textContent = folder.title;
   folderGridDescription.textContent = folder.description;
+
+  selectedFolderId = folder.id;
+  displayedFlashcards = flashcards.filter(
+    (flashcard) => flashcard.folderId === selectedFolderId
+  );
+  createFlashcard();
 
   const existingButton = document.getElementById("newFlashcardButton");
   if (!existingButton) {
@@ -101,6 +116,9 @@ function handleDeleteFolder(folderId) {
   createFolder();
   folderGridTitle.textContent = "";
   folderGridDescription.textContent = "";
+  folderButtonContainer.removeChild(
+    document.getElementById("newFlashcardButton")
+  );
 }
 
 // Event listener for form submission
@@ -121,6 +139,7 @@ function handleAddFlashcard() {
     id: flashcards.length + 1,
     title: titleInput.value,
     content: contentInput.value,
+    folderId: selectedFolderId,
     isRevealed: false,
   };
   flashcards.unshift(newFlashcard);
@@ -210,7 +229,10 @@ function clearForm() {
 // Function to create a flashcard
 function createFlashcard() {
   flashcardGrid.innerHTML = "";
-  flashcards.forEach((flashcard) => {
+  displayedFlashcards = flashcards.filter(
+    (flashcard) => flashcard.folderId === selectedFolderId
+  );
+  displayedFlashcards.forEach((flashcard) => {
     // Create elements for displaying flashcards
     const flashcardItem = document.createElement("div");
     flashcardItem.classList.add("flashcard-item");
