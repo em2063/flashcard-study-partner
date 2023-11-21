@@ -166,6 +166,8 @@ function handleCancel() {
   flashcardForm.removeChild(saveButton);
   flashcardForm.removeChild(cancelButton);
   flashcardForm.appendChild(submitButton);
+  flashcardForm.style.display = "none";
+  newFolderButton.style.display = "flex";
 }
 
 // Function to handle save action
@@ -177,6 +179,8 @@ function handleSave(flashcard) {
   flashcardForm.removeChild(saveButton);
   flashcardForm.removeChild(cancelButton);
   flashcardForm.appendChild(submitButton);
+  flashcardForm.style.display = "none";
+  newFolderButton.style.display = "flex";
   createFlashcard();
 }
 
@@ -200,6 +204,9 @@ cancelButton.addEventListener("click", () => handleCancel());
 
 // Function to edit a flashcard
 function editFlashcard(flashcardId) {
+  console.log("editing", flashcardId);
+  newFolderButton.style.display = "none";
+  flashcardForm.style.display = "flex";
   const flashcard = flashcards.find(
     (flashcard) => flashcard.id === flashcardId
   );
