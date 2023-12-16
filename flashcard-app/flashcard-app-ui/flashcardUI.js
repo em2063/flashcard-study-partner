@@ -29,6 +29,31 @@ const folderButtonContainer = document.getElementById(
   "folder-container-buttons"
 );
 
+const fetchFolders = async () => {
+  try {
+    const response = await fetch("http://localhost:5000/api/folders");
+    const folder = await response.json();
+    folders = folder;
+    createFolder();
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+const fetchFlashcards = async () => {
+  try {
+    const response = await fetch("http://localhost:5000/api/flashcards");
+    const flashcard = await response.json();
+    flashcards = flashcard;
+    createFlashcard();
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+fetchFolders();
+fetchFlashcards();
+
 // Event listener for new folder
 newFolderButton.addEventListener("click", () => handleNewFolder());
 folderCancelButton.addEventListener("click", () => handleFolderCancel());
@@ -56,24 +81,31 @@ function clearFolderForm() {
   folderDesc.value = "";
 }
 
-function generateUniqueId() {
-  // Generate a random string as a unique ID (this is just a simple example)
-  return Date.now().toString(36) + Math.random().toString(36).substr(2);
-}
-
 //Creates new folder object and adds it to the folders array
-function handleAddFolder() {
-  const newFolder = {
-    id: generateUniqueId(),
-    title: folderTitle.value,
-    description: folderDesc.value,
-  };
-  folders.unshift(newFolder);
-  folderFormContainer.style.display = "none";
-  newFolderButton.style.display = "flex";
-  createFolder();
-  clearFolderForm();
-}
+const handleAddFolder = async () => {
+  try {
+    const response = await fetch("http://localhost:5000/api/folders", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        title: folderTitle.value,
+        description: folderDesc.value,
+      }),
+    });
+
+    const newFolder = await response.json();
+
+    folders.unshift(newFolder);
+    folderFormContainer.style.display = "none";
+    newFolderButton.style.display = "flex";
+    createFolder();
+    clearFolderForm();
+  } catch (e) {
+    console.log(e);
+  }
+};
 
 //when user clicks button to create new flashcard, this function allows shows the form to do so
 function handleNewFlashcard() {
@@ -111,19 +143,49 @@ function handleOpenFolder(Id) {
 }
 
 //If user wants to delete a folder this filters the 'deleted folder out
-function handleDeleteFolder(folderId) {
-  folders = folders.filter((folder) => folder.id !== folderId);
-  createFolder();
-  folderGridTitle.textContent = "";
-  folderGridDescription.textContent = "";
-  folderButtonContainer.removeChild(
-    document.getElementById("newFlashcardButton")
-  );
-}
+const handleDeleteFolder = async (folderId) => {
+  try {
+    // Delete flashcards associated with the folder
+    const flashcardsToDelete = flashcards.filter(
+      (flashcard) => flashcard.folderId === folderId
+    );
+
+    for (const flashcard of flashcardsToDelete) {
+      await fetch(`http://localhost:5000/api/flashcards/${flashcard.id}`, {
+        method: "DELETE",
+      });
+    }
+
+    // Delete the folder
+    await fetch(`http://localhost:5000/api/folders/${folderId}`, {
+      method: "DELETE",
+    });
+
+    // Update the local arrays and UI
+    folders = folders.filter((folder) => folder.id !== folderId);
+    flashcards = flashcards.filter(
+      (flashcard) => flashcard.folderId !== folderId
+    );
+
+    createFolder();
+    createFlashcard();
+
+    folderGridTitle.textContent = "";
+    folderGridDescription.textContent = "";
+    folderButtonContainer.removeChild(
+      document.getElementById("newFlashcardButton")
+    );
+  } catch (e) {
+    console.log(e);
+  }
+};
 
 // Event listener for form submission
 flashcardForm.addEventListener("submit", (event) => {
   event.preventDefault();
+  if (flashcardEditID) {
+    return;
+  }
   handleAddFlashcard();
 });
 
@@ -134,30 +196,50 @@ function handleCancelFlashcardForm() {
 }
 
 // Function to add a new flashcard
-function handleAddFlashcard() {
-  const newFlashcard = {
-    id: flashcards.length + 1,
-    title: titleInput.value,
-    content: contentInput.value,
-    folderId: selectedFolderId,
-    isRevealed: false,
-  };
-  flashcards.unshift(newFlashcard);
-  createFlashcard();
-  clearForm();
+const handleAddFlashcard = async () => {
+  try {
+    const response = await fetch("http://localhost:5000/api/flashcards", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        title: titleInput.value,
+        content: contentInput.value,
+        folderId: selectedFolderId,
+        isRevealed: false,
+      }),
+    });
 
-  document.getElementById("thisFlashForm").style.display = "none";
-  folderButtonContainer.appendChild(newFolderButton);
-  folderButtonContainer.appendChild(
-    document.getElementById("newFlashcardButton")
-  );
-}
+    const newFlashcard = await response.json();
+
+    flashcards.unshift(newFlashcard);
+    createFlashcard();
+    clearForm();
+
+    document.getElementById("thisFlashForm").style.display = "none";
+    folderButtonContainer.appendChild(newFolderButton);
+    folderButtonContainer.appendChild(
+      document.getElementById("newFlashcardButton")
+    );
+  } catch (e) {
+    console.log(e);
+  }
+};
 
 // Function to delete a flashcard
-function deleteFlashcard(flashcardId) {
-  flashcards = flashcards.filter((flashcard) => flashcard.id !== flashcardId);
-  createFlashcard();
-}
+const deleteFlashcard = async (flashcardId) => {
+  try {
+    await fetch(`http://localhost:5000/api/flashcards/${flashcardId}`, {
+      method: "DELETE",
+    });
+
+    flashcards = flashcards.filter((flashcard) => flashcard.id !== flashcardId);
+    createFlashcard();
+  } catch (e) {
+    console.log(e);
+  }
+};
 
 // Function to handle cancel action
 function handleCancel() {
@@ -168,21 +250,48 @@ function handleCancel() {
   flashcardForm.appendChild(submitButton);
   flashcardForm.style.display = "none";
   newFolderButton.style.display = "flex";
+  newFlashcardButton.style.display = "flex";
 }
 
 // Function to handle save action
-function handleSave(flashcard) {
-  flashcard.title = titleInput.value;
-  flashcard.content = contentInput.value;
-  titleInput.value = "";
-  contentInput.value = "";
-  flashcardForm.removeChild(saveButton);
-  flashcardForm.removeChild(cancelButton);
-  flashcardForm.appendChild(submitButton);
-  flashcardForm.style.display = "none";
-  newFolderButton.style.display = "flex";
-  createFlashcard();
-}
+const handleSave = async (flashcard) => {
+  try {
+    const response = await fetch(
+      `http://localhost:5000/api/flashcards/${flashcard.id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          title: titleInput.value,
+          content: contentInput.value,
+        }),
+      }
+    );
+
+    const updatedFlashcard = await response.json();
+
+    const newFlashcards = flashcards.map((card) =>
+      card.id === flashcard.id ? updatedFlashcard : card
+    );
+
+    flashcards = newFlashcards;
+
+    titleInput.value = "";
+    contentInput.value = "";
+    flashcardForm.removeChild(saveButton);
+    flashcardForm.removeChild(cancelButton);
+    flashcardForm.appendChild(submitButton);
+    flashcardForm.style.display = "none";
+    newFolderButton.style.display = "flex";
+    newFlashcardButton.style.display = "flex";
+    flashcardEditID = null;
+    createFlashcard();
+  } catch (e) {
+    console.log(e);
+  }
+};
 
 let flashcardEditID = null;
 
@@ -203,9 +312,12 @@ cancelButton.textContent = "cancel";
 cancelButton.addEventListener("click", () => handleCancel());
 
 // Function to edit a flashcard
-function editFlashcard(flashcardId) {
-  console.log("editing", flashcardId);
+const editFlashcard = (flashcardId) => {
   newFolderButton.style.display = "none";
+  document.getElementById("newFlashcardButton").style.display = "none";
+  folderFormContainer.appendChild(flashcardForm);
+  folderFormContainer.style.display = "flex";
+  folderForm.style.display = "none";
   flashcardForm.style.display = "flex";
   const flashcard = flashcards.find(
     (flashcard) => flashcard.id === flashcardId
@@ -216,7 +328,7 @@ function editFlashcard(flashcardId) {
   flashcardForm.appendChild(saveButton);
   flashcardForm.appendChild(cancelButton);
   flashcardEditID = flashcardId;
-}
+};
 
 // Function to reveal a flashcard
 function revealFlashcard(flashcardId) {
