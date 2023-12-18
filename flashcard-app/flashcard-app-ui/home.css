@@ -32,15 +32,14 @@ main {
   border: 5px solid #deaaff;
   padding: 10px;
   border-radius: 15px;
-  background-color: #f9f9f9;
+  background-color: #eaeaea;
   cursor: pointer;
-  height: 170px;
-  width: 170px;
+  height: 200px;
+  width: 200px;
 }
 
 #menu-container div h4 {
   font-family: "Noto Sans Kawi", sans-serif;
-  color: #de3163;
 }
 
 #menu-container div:hover {

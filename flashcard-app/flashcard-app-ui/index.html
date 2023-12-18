@@ -14,9 +14,8 @@
     <main>
       <div id="home-container">
         <div id="menu-container">
-          <div id="createFlash"><h4>Create Flashcards</h4></div>
-          <div><h4>View Flashcards</h4></div>
-          <div><h4>Test Yourself</h4></div>
+          <div id="createFlash"><h4>My Flashcards</h4></div>
+          <div id="quiz"><h4>Quiz Me</h4></div>
         </div>
       </div>
     </main>
@@ -26,6 +25,9 @@
         .addEventListener("click", function () {
           window.location.href = "createFlashcard.html";
         });
+      document.getElementById("quiz").addEventListener("click", function () {
+        window.location.href = "quiz.html";
+      });
     </script>
   </body>
 </html>
