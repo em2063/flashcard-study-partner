@@ -1,12 +1,16 @@
 // Initialise an empty array for storing flashcards
 let flashcards = [];
+
+//flashcards currently being shown in a folder
 let displayedFlashcards = [];
+
 //Initialise empty array for storing folders
 let folders = [];
 
+//folder that is currently open
 let selectedFolderId = null;
 
-// Get form and form elements
+//flashcard elements
 const flashcardForm = document.getElementById("flashcard-form"); //gets flashcard form
 const newFlashFormBox = document.getElementById("new-flash-box");
 const titleInput = document.getElementById("titleInput"); //gets title input of flashcard form
@@ -15,6 +19,8 @@ const flashcardGrid = document.getElementById("flashcard-grid"); //gets grid tha
 const submitButton = document.getElementById("submit-button"); //gets button for submitting flashcard form
 const folderContainer = document.getElementById("folder-container"); //gets container that all elements of folder sit in
 const folderFormContainer = document.getElementById("folder-form-container"); //gets container that flashcard form sits in
+
+//Folder elements
 const newFolderButton = document.getElementById("folder-button"); //gets button for creating new folder
 const folderCancelButton = document.getElementById("folder-cancel-button"); //gets button for cancelling folder creation
 const folderList = document.getElementById("folder-list"); //gets container that folders sit in
@@ -29,6 +35,7 @@ const folderButtonContainer = document.getElementById(
   "folder-container-buttons"
 );
 
+//gets folders from server
 const fetchFolders = async () => {
   try {
     const response = await fetch("http://localhost:5000/api/folders");
@@ -40,6 +47,7 @@ const fetchFolders = async () => {
   }
 };
 
+//gets flashcardsfrom server
 const fetchFlashcards = async () => {
   try {
     const response = await fetch("http://localhost:5000/api/flashcards");
@@ -51,6 +59,7 @@ const fetchFlashcards = async () => {
   }
 };
 
+//loads page with content from server
 fetchFolders();
 fetchFlashcards();
 
@@ -58,6 +67,7 @@ fetchFlashcards();
 newFolderButton.addEventListener("click", () => handleNewFolder());
 folderCancelButton.addEventListener("click", () => handleFolderCancel());
 
+//when folder form is submitted a folder is then added
 folderForm.addEventListener("submit", (event) => {
   event.preventDefault();
   handleAddFolder();
@@ -150,6 +160,7 @@ const handleDeleteFolder = async (folderId) => {
       (flashcard) => flashcard.folderId === folderId
     );
 
+    //tells server to delete every flashcard
     for (const flashcard of flashcardsToDelete) {
       await fetch(`http://localhost:5000/api/flashcards/${flashcard.id}`, {
         method: "DELETE",
