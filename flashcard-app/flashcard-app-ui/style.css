@@ -204,5 +204,29 @@ form button:hover {
   cursor: pointer;
   height: 250px;
   width: 100%;
+}
+
+.flashcard-item-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
   max-width: 450px;
+  gap: 20px;
+}
+
+.flashcard-button-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.flashcard-button-container button {
+  border-radius: 50%;
+  background-color: green;
+  border: none;
+  height: 2.5em;
+  width: 2.5em;
 }

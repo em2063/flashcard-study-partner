@@ -60,9 +60,23 @@ function startQuiz(folderId) {
       flashcardText.textContent = firstFlashcard.content;
     }
 
-    flashcardGrid.appendChild(flashcardItem);
     flashcardContent.appendChild(flashcardText);
     flashcardItem.appendChild(flashcardContent);
+
+    const flashcardItemContainer = document.createElement("div");
+    flashcardItemContainer.classList.add("flashcard-item-container");
+
+    const buttonContainer = document.createElement("div");
+    buttonContainer.classList.add("flashcard-button-container");
+
+    const correctButton = document.createElement("button");
+    buttonContainer.appendChild(correctButton);
+    const incorrectButton = document.createElement("button");
+    buttonContainer.appendChild(incorrectButton);
+
+    flashcardItemContainer.appendChild(flashcardItem);
+    flashcardItemContainer.appendChild(buttonContainer);
+    flashcardGrid.appendChild(flashcardItemContainer);
   }
 }
 
