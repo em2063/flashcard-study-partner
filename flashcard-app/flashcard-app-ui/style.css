@@ -39,6 +39,14 @@ body {
   height: 100%;
 }
 
+#quiz-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+
 .flashcard-item {
   display: flex;
   flex-direction: column;
@@ -183,4 +191,18 @@ form button:hover {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.flashcard-quiz-item {
+  display: flex;
+  flex-direction: column;
+  border: 5px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  height: 250px;
+  width: 100%;
+  max-width: 450px;
 }
