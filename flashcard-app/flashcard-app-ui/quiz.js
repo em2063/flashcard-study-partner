@@ -34,30 +34,42 @@ const fetchFlashcards = async () => {
 fetchFolders();
 fetchFlashcards();
 
-function startQuiz(folderId) {
-  flashcardGrid.innerHTML = "";
+function revealFlashcard(flashcardId) {
+  const flashcard = flashcards.find(
+    (flashcard) => flashcard.id === flashcardId
+  );
+  flashcard.isRevealed = !flashcard.isRevealed;
+  startQuiz(flashcard.folderId);
+}
 
-  if (flashcards.length > 0) {
-    const flashcardItem = document.createElement("div");
-    flashcardItem.classList.add("flashcard-quiz-item");
+let index = 0;
+let correctCount = 0;
+let incorrectCount = 0;
 
-    const flashcardContent = document.createElement("div");
-    flashcardContent.classList.add("flashcard-text-container");
+function correctAnswer(folderId) {
+  correctCount += 1;
+  index += 1;
+  startQuiz(folderId);
+}
 
-    const flashcardText = document.createElement("div");
-    flashcardText.classList.add("flashcard-text");
+function createFlashcard(currentFlashcard) {
+  const flashcardItem = document.createElement("div");
+  flashcardItem.classList.add("flashcard-quiz-item");
+  const flashcardContent = document.createElement("div");
+  flashcardContent.classList.add("flashcard-text-container");
 
-    const currentFolder = flashcards.filter(
-      (flashcard) => flashcard.folderId !== folderId
-    );
-    const firstFlashcard = currentFolder[0];
+  const flashcardText = document.createElement("div");
+  flashcardText.classList.add("flashcard-text");
 
-    if (!firstFlashcard.isRevealed) {
+  flashcardItem.addEventListener("click", () => {
+    revealFlashcard(currentFlashcard.id);
+
+    if (!currentFlashcard.isRevealed) {
       const flashcardTitle = document.createElement("h2");
       flashcardText.appendChild(flashcardTitle);
-      flashcardTitle.textContent = firstFlashcard.title;
+      flashcardTitle.textContent = currentFlashcard.title;
     } else {
-      flashcardText.textContent = firstFlashcard.content;
+      flashcardText.textContent = currentFlashcard.content;
     }
 
     flashcardContent.appendChild(flashcardText);
@@ -70,13 +82,33 @@ function startQuiz(folderId) {
     buttonContainer.classList.add("flashcard-button-container");
 
     const correctButton = document.createElement("button");
+    correctButton.addEventListener("click", () => {
+      correctAnswer(firstFlashcard.folderId);
+    });
+
+    correctButton.classList.add("correct-button");
+    correctButton.textContent = ":)";
     buttonContainer.appendChild(correctButton);
+
     const incorrectButton = document.createElement("button");
+
+    incorrectButton.textContent = ":(";
+    incorrectButton.classList.add("incorrect-button");
     buttonContainer.appendChild(incorrectButton);
 
     flashcardItemContainer.appendChild(flashcardItem);
     flashcardItemContainer.appendChild(buttonContainer);
     flashcardGrid.appendChild(flashcardItemContainer);
+  });
+}
+
+function startQuiz(folderId) {
+  flashcardGrid.innerHTML = "";
+
+  if (flashcards.length > 0) {
+    const currentFolder = flashcards.filter(
+      (flashcard) => flashcard.folderId === folderId
+    );
   }
 }
 

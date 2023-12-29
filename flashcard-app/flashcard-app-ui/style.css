@@ -225,8 +225,26 @@ form button:hover {
 
 .flashcard-button-container button {
   border-radius: 50%;
-  background-color: green;
   border: none;
-  height: 2.5em;
-  width: 2.5em;
+  height: 3em;
+  width: 3em;
+  color: #fff;
+}
+
+.correct-button {
+  background-color: #03c03c;
+}
+
+.correct-button:hover {
+  background-color: #50c878;
+  cursor: pointer;
+}
+
+.incorrect-button {
+  background-color: #ff0800;
+}
+
+.incorrect-button:hover {
+  cursor: pointer;
+  background-color: #e23d28;
 }
