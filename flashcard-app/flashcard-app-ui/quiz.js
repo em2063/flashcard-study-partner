@@ -63,52 +63,55 @@ function createFlashcard(currentFlashcard) {
 
   flashcardItem.addEventListener("click", () => {
     revealFlashcard(currentFlashcard.id);
-
-    if (!currentFlashcard.isRevealed) {
-      const flashcardTitle = document.createElement("h2");
-      flashcardText.appendChild(flashcardTitle);
-      flashcardTitle.textContent = currentFlashcard.title;
-    } else {
-      flashcardText.textContent = currentFlashcard.content;
-    }
-
-    flashcardContent.appendChild(flashcardText);
-    flashcardItem.appendChild(flashcardContent);
-
-    const flashcardItemContainer = document.createElement("div");
-    flashcardItemContainer.classList.add("flashcard-item-container");
-
-    const buttonContainer = document.createElement("div");
-    buttonContainer.classList.add("flashcard-button-container");
-
-    const correctButton = document.createElement("button");
-    correctButton.addEventListener("click", () => {
-      correctAnswer(firstFlashcard.folderId);
-    });
-
-    correctButton.classList.add("correct-button");
-    correctButton.textContent = ":)";
-    buttonContainer.appendChild(correctButton);
-
-    const incorrectButton = document.createElement("button");
-
-    incorrectButton.textContent = ":(";
-    incorrectButton.classList.add("incorrect-button");
-    buttonContainer.appendChild(incorrectButton);
-
-    flashcardItemContainer.appendChild(flashcardItem);
-    flashcardItemContainer.appendChild(buttonContainer);
-    flashcardGrid.appendChild(flashcardItemContainer);
   });
+
+  if (!currentFlashcard.isRevealed) {
+    const flashcardTitle = document.createElement("h2");
+    flashcardText.appendChild(flashcardTitle);
+    flashcardTitle.textContent = currentFlashcard.title;
+  } else {
+    flashcardText.textContent = currentFlashcard.content;
+  }
+
+  flashcardContent.appendChild(flashcardText);
+  flashcardItem.appendChild(flashcardContent);
+
+  const flashcardItemContainer = document.createElement("div");
+  flashcardItemContainer.classList.add("flashcard-item-container");
+
+  const buttonContainer = document.createElement("div");
+  buttonContainer.classList.add("flashcard-button-container");
+
+  const correctButton = document.createElement("button");
+  correctButton.addEventListener("click", () => {
+    correctAnswer(currentFlashcard.folderId);
+  });
+
+  correctButton.classList.add("correct-button");
+  correctButton.textContent = ":)";
+  buttonContainer.appendChild(correctButton);
+
+  const incorrectButton = document.createElement("button");
+
+  incorrectButton.textContent = ":(";
+  incorrectButton.classList.add("incorrect-button");
+  buttonContainer.appendChild(incorrectButton);
+
+  flashcardItemContainer.appendChild(flashcardItem);
+  flashcardItemContainer.appendChild(buttonContainer);
+  flashcardGrid.appendChild(flashcardItemContainer);
 }
 
 function startQuiz(folderId) {
   flashcardGrid.innerHTML = "";
 
+  const disabledFolders = folders.filter((folder) => folder.id !== folderId);
+
   if (flashcards.length > 0) {
     const currentFolder = flashcards.filter(
       (flashcard) => flashcard.folderId === folderId
     );
+    createFlashcard(currentFolder[index]);
   }
 }
 
