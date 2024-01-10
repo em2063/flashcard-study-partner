@@ -253,3 +253,15 @@ form button:hover {
   opacity: 0.5;
   pointer-events: none;
 }
+
+#result-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  max-height: 450px;
+  max-width: 450px;
+  height: 100%;
+  width: 100%;
+  background-color: #50c878;
+}

@@ -59,6 +59,21 @@ function incorrectAnswer(folderId) {
   nextFlashcard(folderId);
 }
 
+function showResult() {
+  const resultContainer = document.createElement("div");
+  resultContainer.classList.add("result-container");
+
+  const resultHeading = document.createElement("h2");
+  resultHeading.textContent = "Congratulations!";
+
+  const result = document.createElement("h4");
+  result.textContent = "You got " + correctCount + "/" + index;
+
+  resultContainer.appendChild(resultHeading);
+  resultContainer.appendChild(result);
+  flashcardGrid.appendChild(resultContainer);
+}
+
 function createFlashcard(currentFlashcard) {
   const flashcardItem = document.createElement("div");
   flashcardItem.classList.add("flashcard-quiz-item");
@@ -138,7 +153,9 @@ function nextFlashcard(folderId) {
     if (index === currentFolder.length) {
       quizStarted = false;
       currentQuizFolderId = null;
+      showResult();
       index = 0;
+      correctCount = 0;
       createFolder();
       return;
     }
