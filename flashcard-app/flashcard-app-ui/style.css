@@ -248,3 +248,8 @@ form button:hover {
   cursor: pointer;
   background-color: #e23d28;
 }
+
+.disabled-folder {
+  opacity: 0.5;
+  pointer-events: none;
+}

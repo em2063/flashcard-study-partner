@@ -9,6 +9,8 @@ folderList = document.getElementById("folder-list");
 //flashcard elements
 flashcardGrid = document.getElementById("quiz-grid");
 
+let currentQuizFolderId = null;
+
 //gets folders from server
 const fetchFolders = async () => {
   try {
@@ -39,7 +41,7 @@ function revealFlashcard(flashcardId) {
     (flashcard) => flashcard.id === flashcardId
   );
   flashcard.isRevealed = !flashcard.isRevealed;
-  startQuiz(flashcard.folderId);
+  nextFlashcard(flashcard.folderId);
 }
 
 let index = 0;
@@ -49,7 +51,12 @@ let incorrectCount = 0;
 function correctAnswer(folderId) {
   correctCount += 1;
   index += 1;
-  startQuiz(folderId);
+  nextFlashcard(folderId);
+}
+
+function incorrectAnswer(folderId) {
+  index += 1;
+  nextFlashcard(folderId);
 }
 
 function createFlashcard(currentFlashcard) {
@@ -95,22 +102,46 @@ function createFlashcard(currentFlashcard) {
 
   incorrectButton.textContent = ":(";
   incorrectButton.classList.add("incorrect-button");
+  incorrectButton.addEventListener("click", () => {
+    incorrectAnswer(currentFlashcard.folderId);
+  });
   buttonContainer.appendChild(incorrectButton);
 
   flashcardItemContainer.appendChild(flashcardItem);
   flashcardItemContainer.appendChild(buttonContainer);
   flashcardGrid.appendChild(flashcardItemContainer);
 }
-
+let quizStarted = false;
 function startQuiz(folderId) {
+  quizStarted = true;
+  if (currentQuizFolderId !== null) {
+    return;
+  }
+  currentQuizFolderId = folderId;
   flashcardGrid.innerHTML = "";
-
-  const disabledFolders = folders.filter((folder) => folder.id !== folderId);
 
   if (flashcards.length > 0) {
     const currentFolder = flashcards.filter(
       (flashcard) => flashcard.folderId === folderId
     );
+    createFlashcard(currentFolder[index]);
+  }
+  createFolder();
+}
+
+function nextFlashcard(folderId) {
+  flashcardGrid.innerHTML = "";
+  if (flashcards.length > 0) {
+    const currentFolder = flashcards.filter(
+      (flashcard) => flashcard.folderId === folderId
+    );
+    if (index === currentFolder.length) {
+      quizStarted = false;
+      currentQuizFolderId = null;
+      index = 0;
+      createFolder();
+      return;
+    }
     createFlashcard(currentFolder[index]);
   }
 }
@@ -120,6 +151,18 @@ function createFolder() {
   folders.forEach((folder) => {
     const folderItem = document.createElement("button");
     folderItem.classList.add("folder-item");
+    folderItem.classList.remove("disabled-folder");
+    folderItem.disabled = false;
+
+    if (quizStarted) {
+      const isDisabled = folder.id !== currentQuizFolderId;
+
+      if (isDisabled) {
+        folderItem.classList.add("disabled-folder");
+        folderItem.disabled = true;
+      }
+    }
+
     const buttonText = document.createElement("p");
     buttonText.innerHTML = folder.title;
     folderItem.addEventListener("click", () => {
