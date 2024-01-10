@@ -63,10 +63,12 @@ function showResult() {
   const resultContainer = document.createElement("div");
   resultContainer.classList.add("result-container");
 
-  const resultHeading = document.createElement("h2");
+  const resultHeading = document.createElement("h1");
+  resultHeading.style.color = "#fff";
   resultHeading.textContent = "Congratulations!";
 
   const result = document.createElement("h4");
+  result.style.color = "#fff";
   result.textContent = "You got " + correctCount + "/" + index;
 
   resultContainer.appendChild(resultHeading);

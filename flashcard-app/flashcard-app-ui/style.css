@@ -2,7 +2,7 @@
 
 body {
   margin: 20px;
-  background-color: #b284be;
+  background-color: #29212b;
   font-family: "Noto Sans Kawi", sans-serif;
 }
 
@@ -254,14 +254,12 @@ form button:hover {
   pointer-events: none;
 }
 
-#result-container {
+.result-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 20px;
   gap: 30px;
-  max-height: 450px;
-  max-width: 450px;
-  height: 100%;
+  height: 80%;
   width: 100%;
-  background-color: #50c878;
 }
