@@ -67,13 +67,14 @@ function showResult() {
   resultHeading.style.color = "#fff";
   resultHeading.textContent = "Congratulations!";
 
-  const result = document.createElement("h4");
-  result.style.color = "#fff";
-  result.textContent = "You got " + correctCount + "/" + index;
+  let resultPercent = (correctCount / index) * 100;
+  progressBar(resultPercent);
 
   resultContainer.appendChild(resultHeading);
-  resultContainer.appendChild(result);
   flashcardGrid.appendChild(resultContainer);
+  index = 0;
+  correctCount = 0;
+  clearInterval(progress);
 }
 
 function createFlashcard(currentFlashcard) {
@@ -136,7 +137,6 @@ function startQuiz(folderId) {
   }
   currentQuizFolderId = folderId;
   flashcardGrid.innerHTML = "";
-
   if (flashcards.length > 0) {
     const currentFolder = flashcards.filter(
       (flashcard) => flashcard.folderId === folderId
@@ -155,10 +155,8 @@ function nextFlashcard(folderId) {
     if (index === currentFolder.length) {
       quizStarted = false;
       currentQuizFolderId = null;
-      showResult();
-      index = 0;
-      correctCount = 0;
       createFolder();
+      showResult();
       return;
     }
     createFlashcard(currentFolder[index]);
@@ -197,4 +195,24 @@ function createFolder() {
     folderItem.appendChild(buttonContainer);
     folderList.appendChild(folderItem);
   });
+}
+
+//Functionality for percentage bar
+function progressBar(result) {
+  let circularProgress = document.querySelector(".progress"),
+    progressValue = document.querySelector(".progress-value");
+
+  let progressStart = 0,
+    speed = 30;
+
+  let progress = setInterval(() => {
+    progressStart++;
+    progressValue.textContent = `${progressStart}%`;
+    circularProgress.style.background = `conic-gradient(#7d2ae8 ${
+      progressStart * 3.6
+    }deg, #ededed 0deg)`;
+    if (progressStart === result) {
+      clearInterval(progress);
+    }
+  }, speed);
 }
