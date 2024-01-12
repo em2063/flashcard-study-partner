@@ -84,11 +84,11 @@ function showResult() {
   resultContainer.appendChild(progressContainer);
 
   let resultPercent = (correctCount / index) * 100;
-  progressBar(resultPercent);
+  console.log(resultPercent);
+  progressBar(Math.round(resultPercent));
 
   index = 0;
   correctCount = 0;
-  clearInterval(progress);
 }
 
 function createFlashcard(currentFlashcard) {

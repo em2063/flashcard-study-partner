@@ -1,9 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Kawi:wght@700&family=Roboto&family=Rubik:wght@800&display=swap");
 
 body {
-  margin: 20px;
+  margin: 20px 100px 20px 100px;
   background-color: #29212b;
   font-family: "Noto Sans Kawi", sans-serif;
+  box-sizing: border-box;
 }
 
 #app-container {
@@ -202,8 +203,10 @@ form button:hover {
   background-color: #f9f9f9;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   cursor: pointer;
-  height: 250px;
+  height: 100%;
   width: 100%;
+  max-width: 450px;
+  max-height: 450px;
 }
 
 .flashcard-item-container {
