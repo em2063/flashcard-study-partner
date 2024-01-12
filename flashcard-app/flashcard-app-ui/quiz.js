@@ -67,11 +67,25 @@ function showResult() {
   resultHeading.style.color = "#fff";
   resultHeading.textContent = "Congratulations!";
 
-  let resultPercent = (correctCount / index) * 100;
-  progressBar(resultPercent);
+  const progressContainer = document.createElement("div");
+  progressContainer.classList.add("progressContainer");
+
+  const progress = document.createElement("div");
+  progress.classList.add("progress");
+
+  const progressValue = document.createElement("span");
+  progressValue.classList.add("progress-value");
 
   resultContainer.appendChild(resultHeading);
   flashcardGrid.appendChild(resultContainer);
+
+  progress.appendChild(progressValue);
+  progressContainer.appendChild(progress);
+  resultContainer.appendChild(progressContainer);
+
+  let resultPercent = (correctCount / index) * 100;
+  progressBar(resultPercent);
+
   index = 0;
   correctCount = 0;
   clearInterval(progress);
