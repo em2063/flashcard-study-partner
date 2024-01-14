@@ -5,6 +5,7 @@ body {
   background-color: #29212b;
   font-family: "Noto Sans Kawi", sans-serif;
   box-sizing: border-box;
+  margin-top: 100px;
 }
 
 #app-container {
@@ -51,11 +52,10 @@ body {
 .flashcard-item {
   display: flex;
   flex-direction: column;
-  border: 5px solid #ccc;
   padding: 10px;
   border-radius: 5px;
   background-color: #f9f9f9;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 10px 10px 30px rgba(255, 255, 255, 0.247);
   cursor: pointer;
   height: 250px;
 }
@@ -128,7 +128,7 @@ input {
 
 form button {
   border-radius: 5px;
-  background-color: #cdb4db;
+  background-color: #29212b;
   border: none;
   padding: 10px;
   font-size: 16px;
@@ -143,11 +143,11 @@ form button:hover {
 #folder-container {
   display: flex;
   flex-direction: column;
-  border: 3px solid #cdb4db;
   padding: 10px;
   border-radius: 5px;
   background-color: #deaaff;
   align-items: center;
+  box-shadow: 5px 5px 30px #deaaff;
   justify-content: center;
 }
 
@@ -197,11 +197,10 @@ form button:hover {
 .flashcard-quiz-item {
   display: flex;
   flex-direction: column;
-  border: 5px solid #ccc;
   padding: 10px;
   border-radius: 5px;
   background-color: #f9f9f9;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 10px 10px 30px rgba(255, 255, 255, 0.247);
   cursor: pointer;
   height: 100%;
   width: 100%;
@@ -278,20 +277,21 @@ form button:hover {
 
 .progress {
   position: relative;
-  height: 120px;
-  width: 120px;
+  height: 300px;
+  width: 300px;
   border-radius: 50%;
   background: conic-gradient(#7d2ae8 3.6deg, #ededed 0deg);
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 5px 5px 30px;
 }
 
 .progress::before {
   content: "";
   position: absolute;
-  height: 100px;
-  width: 100px;
+  height: 250px;
+  width: 250px;
   border-radius: 50%;
   background-color: #50c878;
 }

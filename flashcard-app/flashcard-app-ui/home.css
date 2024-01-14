@@ -29,10 +29,10 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 5px solid #deaaff;
+  box-shadow: 10px 10px 20px;
   padding: 10px;
   border-radius: 15px;
-  background-color: #eaeaea;
+  background-color: #4cffb4;
   cursor: pointer;
   height: 200px;
   width: 200px;
@@ -43,7 +43,6 @@ main {
 }
 
 #menu-container div:hover {
-  background-color: #cdb4db;
+  background-color: #4cffb4cc;
   cursor: pointer;
-  padding: 13px;
 }
