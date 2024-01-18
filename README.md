@@ -1,10 +1,6 @@
-# Web Programming Repo
+# Flashcard Study Partner
 
- ## This repository contains a series of small projects that will display the progression of my knowledge.
+ ## This app is designed to help you study, in a very niche way using flashcards
 
-1) Personal Website - The beginning of an e-portfolio designed to follow my progress
 
-![WEBSITE!](img/image.png)
-
-2) Weekly lab exercises - used to become familiar with new concepts
 
